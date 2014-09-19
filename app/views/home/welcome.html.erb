@@ -1,0 +1,8 @@
+<% if user_signed_in? %>
+    <div class="hero-unit">
+      Welcome, <%= current_user.email %>
+      <%= link_to "Sign out", '/users/sign_out', method: :delete %>
+    </div>
+<% else %>
+    <div class="hero-unit">How about signing up?</div>
+<% end %>
