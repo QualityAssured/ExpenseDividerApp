@@ -1,39 +1,44 @@
-input[name='animation'] {
-    position: relative;
+div.tags-container {
+    position: fixed;
+    height: 500px;
+    max-width: 80%;
+    right: -100%;
 
-    -webkit-animation-name: myfirst;
-    -webkit-animation-duration: 2s;
-    -webkit-animation-timing-function: linear;
+    -webkit-transition-property: right;
+    -webkit-transition-duration: 0.3s;
+    -webkit-transition-timing-function: linear;
 
-    -webkit-animation-iteration-count: infinite;
-    -webkit-animation-direction: alternate;
-    -webkit-animation-play-state: running;
-    /*Standard syntax*/
-    animation-name: myfirst;
-    animation-duration: 2s;
-    animation-timing-function: linear;
-
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-    animation-play-state: running;
+    transition-property: right;
+    transition-duration: 0.3s;
+    transition-timing-function: linear;
 }
 
-
-
-/* Chrome, Safari, Opera */
-@-webkit-keyframes myfirst {
-    0%   {left:0px; top:0px;}
-    25%  {left:200px; top:0px;}
-    50%  {left:200px; top:200px;}
-    75%  {left:0px; top:200px;}
-    100% {left:0px; top:0px;}
+div#tags_container.open {
+    right: 0%;
 }
 
-/* Standard syntax */
-@keyframes myfirst {
-    0%   {left:0px; top:0px;}
-    25%  {left:200px; top:0px;}
-    50%  {left:200px; top:200px;}
-    75%  {left:0px; top:200px;}
-    100% {left:0px; top:0px;}
+div#bill_input {
+    position: fixed;
+    width: 100%;
+    left: 0%;
+
+    -webkit-transition-property: left;
+    -webkit-transition-duration: 0.3s;
+    -webkit-transition-timing-function: linear;
+
+    transition-property: left;
+    transition-duration: 0.3s;
+    transition-timing-function: linear;
+}
+
+div#bill_input.open {
+    left: -100%;
+}
+
+.content {
+    margin-left: 20%;
+}
+
+.btn {
+    margin: 2px;
 }

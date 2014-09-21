@@ -1,3 +1,22 @@
-<h3> Welcome, <%= current_user.email %> </h3>
+<div id='bill_input'>
+  <div class='content'>
+    <h5> Logged in as <%= current_user.email %> </h5>
+    <%= submit_tag "Add tags", id: :add_tags, class: 'btn-primary btn' %>
+  </div>
+</div>
 
-<%= submit_tag "Animation", name: :animation %>
+<div id='tags_container' class='tags-container jumbotron'>
+  <%= submit_tag "Tag1", class: 'btn-primary btn'%>
+  <%= submit_tag "Tag1", class: 'btn-primary btn'%>
+  <%= submit_tag "Tag1", class: 'btn-primary btn'%>
+  <%= submit_tag "Tag1", class: 'btn-primary btn'%>
+  <%= submit_tag "Tag1", class: 'btn-primary btn'%>
+  <%= submit_tag "Tag1", class: 'btn-primary btn'%>
+  <%= submit_tag "Tag1", class: 'btn-primary btn'%>
+  <%= submit_tag "Tag1", class: 'btn-primary btn'%>
+  <%= submit_tag "Tag1", class: 'btn-primary btn'%>
+
+  <%= submit_tag "Done", class: 'btn-primary btn'%>
+  <%= submit_tag "Back", class: 'back btn-primary btn' %>
+
+</div>
