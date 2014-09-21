@@ -42,3 +42,8 @@ div#bill_input.open {
 .btn {
     margin: 2px;
 }
+
+.selected {
+    background-color: #FF9900;
+    color: white;
+}

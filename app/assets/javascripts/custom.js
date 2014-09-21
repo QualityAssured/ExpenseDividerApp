@@ -9,5 +9,7 @@ $(document).ready(function() {
             $('#bill_input').toggleClass('open');
         })
 
-    }
-);
+        $('.tag').click(function() {
+            $(this).toggleClass('selected btn-primary');
+        })
+    });
