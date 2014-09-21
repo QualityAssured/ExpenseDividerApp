@@ -1,0 +1,39 @@
+input[name='animation'] {
+    position: relative;
+
+    -webkit-animation-name: myfirst;
+    -webkit-animation-duration: 2s;
+    -webkit-animation-timing-function: linear;
+
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-direction: alternate;
+    -webkit-animation-play-state: running;
+    /*Standard syntax*/
+    animation-name: myfirst;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-play-state: running;
+}
+
+
+
+/* Chrome, Safari, Opera */
+@-webkit-keyframes myfirst {
+    0%   {left:0px; top:0px;}
+    25%  {left:200px; top:0px;}
+    50%  {left:200px; top:200px;}
+    75%  {left:0px; top:200px;}
+    100% {left:0px; top:0px;}
+}
+
+/* Standard syntax */
+@keyframes myfirst {
+    0%   {left:0px; top:0px;}
+    25%  {left:200px; top:0px;}
+    50%  {left:200px; top:200px;}
+    75%  {left:0px; top:200px;}
+    100% {left:0px; top:0px;}
+}
