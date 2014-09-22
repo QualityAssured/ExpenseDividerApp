@@ -8,7 +8,7 @@ $(document).ready(function() {
             $('#bill_input').toggleClass('open');
         })
 
-        $('.back').click(function() {
+        $('.done').click(function() {
             $('#tags_container').toggleClass('open');
             $('#bill_input').toggleClass('open');
         })
@@ -25,13 +25,13 @@ $(document).ready(function() {
                 selectedTags.push(value);
             }
 
-            if(selectedTags.length > 0) {
+            if(selectedTags.length >= 0) {
                 $('#selected_tags_container').show();
                 if(selectedTags.length > previousLength){
                     $(this).clone().appendTo('#selected_tags_container');
                 }
-                else {
-
+                if(selectedTags.length < previousLength) {
+                    $("#selected_tags_container input[value=" + $(this).val() + "]").remove();
                 }
             }
             else {
