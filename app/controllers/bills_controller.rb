@@ -4,4 +4,8 @@ class BillsController < ApplicationController
     render :new
   end
 
+  def create
+    render :created
+  end
+
 end

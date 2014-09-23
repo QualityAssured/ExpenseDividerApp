@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: "bills#new"
+  resources :bills
   devise_for :users
 
 
@@ -57,6 +57,6 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-
+  root to: "bills#new"
 
 end

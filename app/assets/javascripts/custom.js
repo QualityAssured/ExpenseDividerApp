@@ -6,12 +6,12 @@ $(document).ready(function() {
         $('#add_tags').click(function() {
             $('#tags_container').toggleClass('open');
             $('#bill_input').toggleClass('open');
-        })
+        });
 
         $('.done').click(function() {
             $('#tags_container').toggleClass('open');
             $('#bill_input').toggleClass('open');
-        })
+        });
 
         $('.tag').click(function() {
             value = $(this).val();
@@ -28,7 +28,7 @@ $(document).ready(function() {
                 selectedTags.push(value);
                 $('#selected_tags_container').show();
                 $(this).clone().appendTo('#selected_tags_container');
-                $('#selected_tags_container').append('<input class=' + $(this).val() + ' type="number" /><i class="fa fa-times ' + $(this).val() + '"></i></br>');
+                $('#selected_tags_container').append('<input class=' + $(this).val() + ' name=tagswithamount[' + $(this).val() + '] type="number" /><i class="fa fa-times ' + $(this).val() + '"></i></br>');
             }
         })
 });

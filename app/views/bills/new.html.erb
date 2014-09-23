@@ -3,7 +3,10 @@
     <h5> Logged in as <%= current_user.email %> </h5>
     <%= submit_tag "Add/Remove tags", id: :add_tags, class: 'btn-primary btn' %>
 
-    <div id='selected_tags_container' class='jumbotron'></div>
+    <%= form_tag(bills_path) do %>
+      <div id='selected_tags_container' class='jumbotron'></div>
+      <%= submit_tag "Submit", class: 'btn-primary btn' %>
+    <% end %>
   </div>
 </div>
 
