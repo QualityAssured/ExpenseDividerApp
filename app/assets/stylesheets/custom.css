@@ -43,7 +43,15 @@ div#bill_input.open {
     margin: 2px;
 }
 
+input[type='number'] {
+    width: 20%;
+}
+
 .selected {
     background-color: #FF9900;
     color: white;
+}
+
+.fa-times {
+    margin-left: 5px;
 }
