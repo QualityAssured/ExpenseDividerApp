@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :bills
+  resources :tags
   devise_for :users
 
 

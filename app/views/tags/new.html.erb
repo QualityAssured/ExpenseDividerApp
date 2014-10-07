@@ -1,0 +1,17 @@
+<div id='config_screen'>
+  <div class='content'>
+    <h5> Tags </h5>
+    <div id='user_tags_container' class='user_tags-container jumbotron'>
+      <% current_user.tags.each do |t|%>
+        <%= submit_tag t.description, class: 'btn-primary btn tag'%>
+      <% end %>
+    </div>
+
+    <%= form_tag(tags_path) do %>
+      <%= submit_tag "Create New Tag", id: :add_tags, class: 'btn-primary btn' %>
+      <%= label_tag "Description:" %> <%= text_field_tag "description"%>
+      </br>
+      <%= submit_tag "Delete Tag", class: 'btn-primary btn' %>
+    <% end %>
+  </div>
+</div>
