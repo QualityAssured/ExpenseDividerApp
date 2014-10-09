@@ -8,6 +8,5 @@ $(document).ready(function() {
             selected_Tags = selected_Tags +( $( element).attr('tag_id')+ ',');
         });
         $('#tag_ids').attr('value', selected_Tags);
-        alert($('#tag_ids').attr('value'));
     });
 });

@@ -1,0 +1,7 @@
+<% current_user.bills.each do |b| %>
+  <%= label_tag b.total ,nil, class: 'btn-primary btn select_tags'%>
+    <% b.tags.split(',').each do |t|%>
+    <%= label_tag t,nil, class: 'btn-primary btn select_tags' %>
+    <% end %>
+  </br>
+<% end %>

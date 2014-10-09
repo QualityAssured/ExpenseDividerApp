@@ -12,4 +12,8 @@ class BillsController < ApplicationController
     render :created
   end
 
+  def index
+     render :index
+  end
+
 end
