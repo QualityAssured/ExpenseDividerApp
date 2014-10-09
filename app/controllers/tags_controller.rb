@@ -9,4 +9,9 @@ class TagsController < ApplicationController
     render :new
   end
 
+  def destroy_multiple
+    Tag.destroy(params[:tag_ids].split(','))
+    render :new
+  end
+
 end
