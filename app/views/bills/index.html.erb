@@ -1,7 +1,12 @@
 <% current_user.bills.each do |b| %>
-  <%= label_tag b.total ,nil, class: 'btn-primary btn select_tags'%>
+  <%= label_tag "Description:" ,nil, class: 'btn-primary btn select_tags'%>
+  <%= label_tag b.description ,nil, class: 'btn-primary btn select_tags'%></br>
+  <%= label_tag "Total:" ,nil, class: 'btn-primary btn select_tags'%>
+  <%= label_tag b.total ,nil, class: 'btn-primary btn select_tags'%></br>
+  <%= label_tag "Tags:" ,nil, class: 'btn-primary btn select_tags'%></br>
     <% b.tags.split(',').each do |t|%>
     <%= label_tag t,nil, class: 'btn-primary btn select_tags' %>
     <% end %>
   </br>
+  <%= label_tag "------------------------------------------------------"%></br>
 <% end %>
