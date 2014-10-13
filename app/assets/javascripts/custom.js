@@ -27,8 +27,14 @@ $(document).ready(function() {
             else {
                 selectedTags.push(value);
                 $('#selected_tags_container').show();
-                $(this).clone().appendTo('#selected_tags_container');
-                $('#selected_tags_container').append('<input class=' + $(this).val() + ' name=tagswithamount[' + $(this).val() + '] type="number" /><i class="fa fa-times ' + $(this).val() + '"></i></br>');
+                addLine(value);
             }
         })
 });
+
+function addLine(value) {
+    line = $('#hidden_input_line').children().clone();
+    button = line[0];
+    button.value = value;
+    line.appendTo('#selected_tags_container');
+}
