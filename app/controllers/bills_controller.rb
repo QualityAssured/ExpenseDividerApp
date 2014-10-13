@@ -7,9 +7,13 @@ class BillsController < ApplicationController
   def create
 
     tags = params[:tagswithamount].to_s
-    Bill.create(user_id: current_user.id, total: params[:total], tags: tags)
+    Bill.create(user_id: current_user.id, total: params[:total], tags: tags, description: params[:description])
 
     render :created
+  end
+
+  def index
+     render :index
   end
 
 end

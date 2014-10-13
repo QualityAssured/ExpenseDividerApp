@@ -35,6 +35,8 @@ $(document).ready(function() {
 function addLine(value) {
     line = $('#hidden_input_line').children().clone();
     button = line[0];
+    number_field = line[1];
     button.value = value;
+    number_field.name = "tagswithamount[" + value + "]";
     line.appendTo('#selected_tags_container');
 }

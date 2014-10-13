@@ -1,0 +1,14 @@
+<% current_user.bills.each do |b| %>
+  <%= label_tag "Description:"%>
+  <%= label_tag b.description%></br>
+  <%= label_tag "Total:" ,nil%>
+  <%= label_tag b.total ,nil%></br>
+  <%= label_tag "Tags:" ,nil%>
+    <% b.tags.split(',').each do |t|%>
+    <%= label_tag "||",nil%>
+    <%= label_tag t,nil%>
+    <%= label_tag "||",nil%>
+    <% end %>
+  </br>
+  <%= label_tag "------------------------------------------------------"%></br>
+<% end %>

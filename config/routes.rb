@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
   resources :bills
-  resources :tags
+
+  resources :tags do
+  collection do
+    delete 'destroy_multiple'
+    end
+  end
+
   devise_for :users
 
 
