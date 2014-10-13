@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   resources :groups do
   collection do
-    delete 'destroy_multiple'
+    delete 'destroy_multiple_members'
     end
   end
 

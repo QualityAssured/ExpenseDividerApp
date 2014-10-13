@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20141012104147) do
     t.float   "total"
     t.string  "tags"
     t.string  "description"
-    t.string  "group_id"
+    t.integer "group_id"
   end
 
   create_table "expense_categories", force: true do |t|

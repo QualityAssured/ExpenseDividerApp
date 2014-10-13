@@ -1,7 +1,7 @@
 class AddGroupsTable < ActiveRecord::Migration
   def change
 
-    add_column :bills, :group_id, :string
+    add_column :bills, :group_id, :integer
 
     create_table :groups do |t|
       t.integer :owner_id

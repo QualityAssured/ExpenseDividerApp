@@ -10,6 +10,8 @@
       </br>
       <%= label_tag "Description:" %> <%= text_field_tag "description"%>
       </br>
+      <%= select_tag "groups_select", options_from_collection_for_select(current_user.groups, "id", "group_name") %>
+      </br>
       <%= submit_tag "Submit", class: 'btn-primary btn' %>
     <% end %>
   </div>

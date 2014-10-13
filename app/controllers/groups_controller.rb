@@ -23,9 +23,14 @@ class GroupsController < ApplicationController
     render :edit
   end
 
-  def destroy_multiple
-    Tag.destroy(params[:tag_ids].split(','))
-    render :new
+  def destroy_multiple_members
+    @group = Group.find(params[:group_id])
+    members_ids = params[:members_ids].split(',')
+    members_ids.each do |i|
+     member = User.find(i)
+      @group.users.delete(member)
+    end
+    render :edit
   end
 
   def index
