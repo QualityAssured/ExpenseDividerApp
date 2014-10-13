@@ -27,16 +27,26 @@ $(document).ready(function() {
             else {
                 selectedTags.push(value);
                 $('#selected_tags_container').show();
-                addLine(value);
+                addLine(value, 1);
+
+                $('select').change(function() {
+                   id = $(this).find(":selected").val();
+                   value = $(this).prev().prev().val();
+                   $(this).prev('input').attr('name', buildNameFromValueAndId(value, id));
+                });
             }
         })
 });
 
-function addLine(value) {
+function addLine(value, default_user_id) {
     line = $('#hidden_input_line').children().clone();
     button = line[0];
     number_field = line[1];
     button.value = value;
-    number_field.name = "tagswithamount[" + value + "]";
+    number_field.name = buildNameFromValueAndId(value, default_user_id);
     line.appendTo('#selected_tags_container');
+}
+
+function buildNameFromValueAndId(value, id) {
+    return "tags_with_amount_per_user[][" + id + "][" + value + "]";
 }

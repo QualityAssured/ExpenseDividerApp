@@ -18,7 +18,8 @@
 <div id="hidden_input_line" hidden="hidden">
   <%= submit_tag "no value", class: 'btn-primary btn tag'%>
   <input type="number"/>
-  <i class="fa fa-times"></i>
+  <%= select_tag(:fixthis, options_for_select([['Tom', 1], ['Alain', 2]], 1)) %>
+  </br>
 </div>
 
 <div id='tags_container' class='tags-container jumbotron'>
