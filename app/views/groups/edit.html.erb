@@ -1,0 +1,17 @@
+<div id='member_input'>
+  <div class='content'>
+    <%= label_tag @group.group_name+' members'%>
+    <div id='invite_members_container' class='invite_members-container jumbotron'>
+      <% @group.users.each do |u| %>
+      <%= label_tag u.email,nil, class: 'btn-primary btn tag', id: u.id %>
+      <% end %>
+    </div>
+
+    <h5>Invite New Users </h5>
+
+    <%=form_tag group_path(@group), :method => :patch do %>
+      <%= label_tag "Member email:" %> <%= email_field_tag "member_email", nil,id: @group.id%>
+      <%= submit_tag "Invite", class: 'btn-primary btn' %>
+    <% end %>
+  </div>
+</div>

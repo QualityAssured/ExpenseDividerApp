@@ -1,0 +1,14 @@
+    <div id='group_input'>
+      <div class='content'>
+        <h5>Create a new group</h5>
+        <%= form_tag(groups_path) do %>
+          <div id ='create_groups_container' class = 'jumbotron'>
+            <%= label_tag "Name:" %> <%= text_field_tag "group_name"%>
+            <%= submit_tag "Submit", class: 'btn-primary btn' %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <h5>Edit Groups</h5>
+    <%= select_tag "groups_select", options_from_collection_for_select(current_user.groups, "id", "group_name") %>
+      <%= link_to "Edit Group", nil, id: nil,class: 'edit_group_button' %>
