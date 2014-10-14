@@ -1,10 +1,10 @@
 <% current_user.bills.each do |b| %>
-  <%= label_tag "Description:"%>
-  <%= label_tag b.description%></br>
-  <%= label_tag "Total:" ,nil%>
-  <%= label_tag b.total ,nil%></br>
-  <%= label_tag "Group:"%>
-  <%= label_tag Group.find(b.group_id).group_name%></br>
+  <%= label_tag "Description:"%>  <%= label_tag b.description%></br>
+
+  <%= label_tag "Total:" ,nil%>  <%= label_tag b.total ,nil%></br>
+
+  <%= label_tag "Group:"%>  <%= label_tag Group.find(b.group_id).group_name%></br>
+
   <%= label_tag "Tags:" ,nil%>
     <% b.tags.split(',').each do |t|%>
     <%= label_tag "||",nil%>

@@ -1,6 +1,6 @@
 <div id='bill_input'>
   <div class='content'>
-    <h5> Logged in as <%= current_user.email %> </h5>
+    <h5> Create new bill</h5>
     <%= submit_tag "Add/Remove tags", id: :add_tags, class: 'btn-primary btn' %>
 
     <%= form_tag(bills_path) do %>
@@ -21,21 +21,6 @@
   <% current_user.tags.each do |t| %>
     <%= submit_tag t.description, class: 'btn-primary btn tag', tag_id: t.id %>
   <% end %>
-
-
-
-  <!--<%= submit_tag "Tag1", class: 'btn-primary btn tag'%>-->
-  <!--<%= submit_tag "Tag2", class: 'btn-primary btn tag'%>-->
-  <!--<%= submit_tag "Tag3", class: 'btn-primary btn tag'%>-->
-  <!--<%= submit_tag "Tag4", class: 'btn-primary btn tag'%>-->
-  <!--<%= submit_tag "Tag5", class: 'btn-primary btn tag'%>-->
-  <!--<%= submit_tag "Tag6", class: 'btn-primary btn tag'%>-->
-  <!--<%= submit_tag "Tag7", class: 'btn-primary btn tag'%>-->
-  <!--<%= submit_tag "Tag8", class: 'btn-primary btn tag'%>-->
-  <!--<%= submit_tag "Tag9", class: 'btn-primary btn tag'%>-->
-  <!--<%= submit_tag "Tag10", class: 'btn-primary btn tag'%>-->
-  <!--<%= submit_tag "Tag11", class: 'btn-primary btn tag'%>-->
-
   </br>
   <%= submit_tag "Done", class: 'done btn-primary btn'%>
 
