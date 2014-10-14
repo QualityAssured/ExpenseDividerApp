@@ -18,7 +18,7 @@
 <div id="hidden_input_line" hidden="hidden">
   <%= submit_tag "no value", class: 'btn-primary btn tag'%>
   <input type="number"/>
-  <%= select_tag(:fixthis, options_for_select([['Tom', 1], ['Alain', 2]], 1)) %>
+  <%= collection_select(nil, :user, User.all, :id, :email) %>
   </br>
 </div>
 
