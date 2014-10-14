@@ -23,8 +23,8 @@ class GroupsController < ApplicationController
 
   def update
     @group = Group.find(params[:id])
-    if !@group.users.include?(User.find_by_email(params[:member_email]))
-      @group.users << User.find_by_email(params[:member_email])
+    if !@group.users.include?(User.find_by_username(params[:member_username]))
+      @group.users << User.find_by_username(params[:member_username])
     end
     render :edit
   end
