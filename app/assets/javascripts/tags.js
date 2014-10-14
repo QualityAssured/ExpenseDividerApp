@@ -1,12 +1,12 @@
 $(document).ready(function() {
     var selected_Tags;
 
-    $('.select_tags').click(function() {
+    $('.select_tags','#tags_input').click(function() {
         selected_Tags='';
         $(this).toggleClass('selected');
-        $('.selected').each (function( index, element ){
+        $('.selected','#tags_input').each (function( index, element ){
             selected_Tags = selected_Tags +( $( element).attr('tag_id')+ ',');
         });
-        $('#tag_ids').attr('value', selected_Tags);
+        $('#tag_ids','#tags_input').attr('value', selected_Tags);
     });
 });

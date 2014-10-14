@@ -1,32 +1,32 @@
 $(document).ready(function() {
         var selectedTags = [];
 
-        $('#selected_tags_container').hide();
+        $('#selected_tags_container','#bill_input').hide();
 
-        $('#add_tags').click(function() {
+        $('#add_tags','#bill_input').click(function() {
             $('#tags_container').toggleClass('open');
             $('#bill_input').toggleClass('open');
         });
 
-        $('.done').click(function() {
+        $('.done','#tags_container').click(function() {
             $('#tags_container').toggleClass('open');
             $('#bill_input').toggleClass('open');
         });
 
-        $('.tag').click(function() {
+        $('.tag','#tags_container').click(function() {
             value = $(this).val();
             index = $.inArray(value, selectedTags);
 
-            $(this).toggleClass('selected btn-primary');
+            $(this).toggleClass('selected btn-primary','#bill_input');
             if( index > -1) {
                 selectedTags.splice(index, 1);
-                $("#selected_tags_container input[value=" + $(this).val() + "]").remove();
+                $("#selected_tags_container input[value=" + $(this).val() + "]",'#bill_input').remove();
                 $("." + $(this).val()).next("br").remove();
                 $("." + $(this).val()).remove();
             }
             else {
                 selectedTags.push(value);
-                $('#selected_tags_container').show();
+                $('#selected_tags_container','#bill_input').show();
                 addLine(value, 1);
 
                 $('select').change(function() {
@@ -44,7 +44,7 @@ function addLine(value, default_user_id) {
     number_field = line[1];
     button.value = value;
     number_field.name = buildNameFromValueAndId(value, default_user_id);
-    line.appendTo('#selected_tags_container');
+    line.appendTo('#selected_tags_container','#bill_input');
 }
 
 function buildNameFromValueAndId(value, id) {

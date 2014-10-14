@@ -1,6 +1,6 @@
 <div id='bill_input'>
   <div class='content'>
-    <h5> Logged in as <%= current_user.email %> </h5>
+    <h5> Create new bill</h5>
     <%= submit_tag "Add/Remove tags", id: :add_tags, class: 'btn-primary btn' %>
 
     <%= form_tag(bills_path) do %>
@@ -9,6 +9,8 @@
       <%= label_tag "Total:" %> <%= number_field_tag "total"%>
       </br>
       <%= label_tag "Description:" %> <%= text_field_tag "description"%>
+      </br>
+      <%= select_tag "groups_select", options_from_collection_for_select(current_user.groups, "id", "group_name") %>
       </br>
       <%= submit_tag "Submit", class: 'btn-primary btn' %>
     <% end %>
@@ -26,9 +28,7 @@
   <% current_user.tags.each do |t| %>
     <%= submit_tag t.description, class: 'btn-primary btn tag', tag_id: t.id %>
   <% end %>
-
   </br>
-
   <%= submit_tag "Done", class: 'done btn-primary btn'%>
 
 

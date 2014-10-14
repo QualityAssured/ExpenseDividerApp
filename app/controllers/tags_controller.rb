@@ -1,18 +1,29 @@
 class TagsController < ApplicationController
 
   def new
+    @tag = Tag.new
     render :new
   end
 
   def create
-    Tag.create(user_id: current_user.id, description: params[:description])
-    render :new
+    if Tag.create(user_id: current_user.id, description: params[:tag][:description].to_s.capitalize).valid?
+      @tag = Tag.where(:user_id => current_user.id, :description => params[:tag][:description].to_s.capitalize).first
+      render :new
+    else
+      @tag = Tag.create(user_id: current_user.id, description: params[:tag][:description].to_s.capitalize)
+      render :action => "new"
+    end
   end
 
   def destroy_multiple
-    #TODO: Investigate if this could be dangerous
-    # If a user fakes a post, with a tag id that does not belong to him, will it destroy another user's tag?
-    Tag.destroy(params[:tag_ids].split(','))
+    @tag = Tag.new
+    tags_to_destroy = Tag.find(params[:tag_ids].split(','))
+    tags_to_destroy.each do |t|
+      if current_user.id == t.user_id
+        t.destroy
+      end
+    end
+    # Tag.destroy(params[:tag_ids].split(','))
     render :new
   end
 

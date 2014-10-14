@@ -3,7 +3,25 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+  attr_accessor :login
 
   has_many :tags
+  has_and_belongs_to_many :groups
   has_many :bills
+  validates :email,:username, presence: true
+  validates :email,:username, uniqueness: true
+
+  validates :username,
+            :uniqueness => {
+                :case_sensitive => false
+            }
+
+  def self.find_for_database_authentication(warden_conditions)
+    conditions = warden_conditions.dup
+    if login = conditions.delete(:login)
+      where(conditions).where(["lower(username) = :value OR lower(email) = :value", { :value => login.downcase }]).first
+    else
+      where(conditions).first
+    end
+  end
 end

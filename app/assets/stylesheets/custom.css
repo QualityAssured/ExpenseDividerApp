@@ -30,6 +30,11 @@ div#bill_input {
     transition-duration: 0.3s;
     transition-timing-function: linear;
 }
+label.error {
+    color: red;
+    border: outset;
+    border-bottom-color: red;
+}
 
 div#bill_input.open {
     left: -100%;

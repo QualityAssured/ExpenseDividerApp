@@ -1,0 +1,25 @@
+<div id='member_input'>
+  <div class='content'>
+    <%= label_tag @group.group_name+' members'%>
+    <div id='invite_members_container' class='invite_members-container jumbotron'>
+      <% @group.users.each do |u| %>
+        <% if u.id != @group.owner_id%>
+      <%= label_tag u.username,nil, class: 'btn-primary btn select_members', id: u.id %>
+          <% end %>
+      <% end %>
+    </div>
+    <!--Destroy-->
+      <%= form_tag destroy_multiple_members_groups_path, method: :delete do %>
+        <%= hidden_field_tag :members_ids, nil%>
+        <%= hidden_field_tag :group_id, @group.id %>
+        <%= submit_tag "Remove selected members", class: 'btn-primary btn delete_members'%>
+      <% end %>
+
+    <h5>Invite New Users </h5>
+
+    <%=form_tag group_path(@group), :method => :patch do %>
+      <%= label_tag "Member name:" %> <%= text_field "member_username", nil,id: @group.id%>
+      <%= submit_tag "Invite", class: 'btn-primary btn' %>
+    <% end %>
+  </div>
+</div>

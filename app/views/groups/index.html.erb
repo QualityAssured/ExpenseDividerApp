@@ -1,0 +1,14 @@
+    <div id='group_input'>
+      <div class='content'>
+        <h5>Create a new group</h5>
+        <%= form_for :group, :url => {:controller => "groups", :action => "create", :method => "post" } do|f| %>
+          <%= f.label :group_name%>
+          <%=f.text_field :group_name%>
+          <%= f.submit "Create Group"%>
+          <%=label_tag @group.errors.full_messages.first,nil, class: 'error' if @group.errors.any? %>
+        <% end %>
+      </div>
+    </div>
+    <h5>Edit Groups</h5>
+    <%= select_tag "groups_select", options_from_collection_for_select(current_user.groups, "id", "group_name") %>
+      <%= link_to "Edit Group", nil, id: nil,class: 'edit_group_button' %>
