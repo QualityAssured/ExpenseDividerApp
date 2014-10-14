@@ -9,7 +9,7 @@ class BillsController < ApplicationController
     tags = params[:tagswithamount].to_s
     Bill.create(user_id: current_user.id, total: params[:total], tags: tags, description: params[:description],group_id: params[:groups_select])
 
-    render :created
+    render :new
   end
 
   def index
