@@ -12,13 +12,13 @@ $(document).ready(function() {
 // set hidden field for removing members
     var selected_Members;
 
-    $('.select_members').click(function() {
+    $('.select_members','#member_input').click(function() {
         selected_Members='';
         $(this).toggleClass('selected');
-        $('.selected').each (function( index, element ){
+        $('.selected','#member_input').each (function( index, element ){
             selected_Members = selected_Members +( $( element).attr('id')+ ',');
         });
-        $('#members_ids').attr('value', selected_Members);
+        $('#members_ids','#member_input').attr('value', selected_Members);
 
     });
 });
