@@ -1,11 +1,11 @@
     <div id='group_input'>
       <div class='content'>
         <h5>Create a new group</h5>
-        <%= form_tag(groups_path) do %>
-          <div id ='create_groups_container' class = 'jumbotron'>
-            <%= label_tag "Name:" %> <%= text_field_tag "group_name"%>
-            <%= submit_tag "Submit", class: 'btn-primary btn' %>
-          </div>
+        <%= form_for :group, :url => {:controller => "groups", :action => "create", :method => "post" } do|f| %>
+          <%= f.label :group_name%>
+          <%=f.text_field :group_name%>
+          <%= f.submit "Create Group"%>
+          <%=label_tag @group.errors.full_messages.first,nil, class: 'error' if @group.errors.any? %>
         <% end %>
       </div>
     </div>

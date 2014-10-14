@@ -6,12 +6,11 @@ class TagsController < ApplicationController
   end
 
   def create
-    # if params[:description] != nil && params[:description] != ''
-    if Tag.create(user_id: current_user.id, description: params[:tag][:description]).valid?
-      @tag = Tag.all.last
+    if Tag.create(user_id: current_user.id, description: params[:tag][:description].to_s.capitalize).valid?
+      @tag = Tag.where(:user_id => current_user.id, :description => params[:tag][:description].to_s.capitalize).first
       render :new
     else
-      @tag = Tag.create(user_id: current_user.id, description: params[:tag][:description])
+      @tag = Tag.create(user_id: current_user.id, description: params[:tag][:description].to_s.capitalize)
       render :action => "new"
     end
   end

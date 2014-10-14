@@ -1,13 +1,19 @@
 class GroupsController < ApplicationController
 
   def new
+    @group = Group.new
     render :new
   end
 
   def create
-    this_group = Group.create(owner_id: current_user.id, group_name: params[:group_name])
-    current_user.groups << this_group
-    render :index
+    if Group.create(owner_id: current_user.id, group_name: params[:group][:group_name]).valid?
+      @group = Group.where(:owner_id => current_user.id,:group_name => params[:group][:group_name]).first
+      current_user.groups << @group
+      render :index
+    else
+      @group = Group.create(owner_id: current_user.id, group_name: params[:group][:group_name])
+      render :action => "index"
+    end
   end
 
   def edit
@@ -34,6 +40,7 @@ class GroupsController < ApplicationController
   end
 
   def index
+    @group = Group.new
     render :index
   end
 
