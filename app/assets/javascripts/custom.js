@@ -38,15 +38,15 @@ $(document).ready(function() {
         })
 });
 
-function addLine(value, default_user_id) {
+function addLine(tag_value, default_user_id) {
     line = $('#hidden_input_line').children().clone();
     button = line[0];
     number_field = line[1];
-    button.value = value;
-    number_field.name = buildNameFromValueAndId(value, default_user_id);
+    button.value = tag_value;
+    number_field.name = buildNameFromValueAndId(tag_value, default_user_id);
     line.appendTo('#selected_tags_container','#bill_input');
 }
 
-function buildNameFromValueAndId(value, id) {
-    return "tags_with_amount_per_user[][" + id + "][" + value + "]";
+function buildNameFromValueAndId(tag_value, id) {
+    return "tags_with_amount_per_user[][" + id + "][" + tag_value + "]";
 }
