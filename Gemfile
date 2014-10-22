@@ -28,6 +28,7 @@ gem 'spring',        group: :development
 
 gem 'rspec-rails'
 
+gem 'factory_girl_rails'
 
 gem 'therubyracer'
 
