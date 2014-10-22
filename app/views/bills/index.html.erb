@@ -6,11 +6,15 @@
   <%= label_tag "Group:"%>  <%= label_tag Group.find(b.group_id).group_name%></br>
 
   <%= label_tag "Tags:" ,nil%>
+    <% if b.tags == nil %>
+    <%= label_tag "None",nil%>
+    <% else %>
     <% b.tags.split(',').each do |t|%>
     <%= label_tag "||",nil%>
     <%= label_tag t,nil%>
     <%= label_tag "||",nil%>
     <% end %>
+  <% end %>
   </br>
   <%= label_tag "------------------------------------------------------"%></br>
 <% end %>

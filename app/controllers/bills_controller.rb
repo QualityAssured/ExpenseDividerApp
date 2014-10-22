@@ -6,9 +6,9 @@ class BillsController < ApplicationController
 
   def create
 
-    bill = Bill.create(user_id: current_user.id, total: params[:total], description: params[:description],group_id: params[:groups_select])
+    bill = Bill.create(user_id: current_user.id, total: params[:total], description: params[:description], group_id: params[:groups_select])
 
-
+   if params[:tags_with_amount_per_user] != nil
     tags_per_user = params[:tags_with_amount_per_user][0].to_hash
 
     tags_per_user.each do |user_with_tags|
@@ -18,6 +18,7 @@ class BillsController < ApplicationController
       tags_with_amount.each do |tag, amount|
         bill.tags_with_amounts.create(amount: amount, user_to_pay_id: user_id, tag_name: tag)
       end
+     end
     end
 
     render :new

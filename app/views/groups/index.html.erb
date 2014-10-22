@@ -1,7 +1,7 @@
     <div id='group_input'>
       <div class='content'>
         <h5>Create a new group</h5>
-        <%= form_for :group, :url => {:controller => "groups", :action => "create", :method => "post" } do|f| %>
+        <%= form_for @group, :url => {:controller => "groups", :action => "create", :method => "post" } do|f| %>
           <%= f.label :group_name%>
           <%=f.text_field :group_name%>
           <%= f.submit "Create Group"%>
