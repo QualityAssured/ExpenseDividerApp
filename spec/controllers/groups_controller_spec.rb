@@ -80,8 +80,8 @@ RSpec.describe GroupsController, :type => :controller do
 
   describe "DELETE #destroy_multiple_members" do
     let(:user) { User.first }
-    let(:member1) { FactoryGirl.create(:user, username: "Jake", email: "jake@pro.be", password: "12345678", password_confirmation: "12345678") }
-    let(:member2) { FactoryGirl.create(:user, username: "Bob", email: "Bob@pro.be", password: "12345678", password_confirmation: "12345678") }
+    let!(:member1) { FactoryGirl.create(:user, username: "Jake", email: "jake@pro.be", password: "12345678", password_confirmation: "12345678") }
+    let!(:member2) { FactoryGirl.create(:user, username: "Bob", email: "Bob@pro.be", password: "12345678", password_confirmation: "12345678") }
     let(:group) { FactoryGirl.create(:group, owner_id: user.id, group_name: "testgrp", users: [user,member1,member2]) }
 
     it "should delete multiple members at once" do

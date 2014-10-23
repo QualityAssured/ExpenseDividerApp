@@ -23,7 +23,6 @@ class TagsController < ApplicationController
         t.destroy
       end
     end
-    # Tag.destroy(params[:tag_ids].split(','))
     render :new
   end
 
