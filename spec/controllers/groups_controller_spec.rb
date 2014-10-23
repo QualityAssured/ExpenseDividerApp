@@ -37,16 +37,59 @@ RSpec.describe GroupsController, :type => :controller do
       expect(Group.all.count).to equal(1)
     end
 
-    it "should link the group to the user" do
+    it "should add owner to group membership" do
       post :create, owner_id: user.id, :group => { :group_name => 'testgrp' }
-      expect(Groups_users.all.count).to eq(1)
+      expect(Groups_users.find_by(user_id: user.id).group_id).to eq(Group.first.id)
+    end
+  end
+
+    describe "GET #edit" do
+      let(:user) { User.first }
+      let(:group) { FactoryGirl.create(:group, owner_id: user.id) }
+
+      it "should return the correct response"do
+      get :edit, id: group.id
+      expect(response).to have_http_status(200)
+      end
+
+    it "should render the index template" do
+      get :edit, id: group.id
+      expect(response).to render_template :edit
+    end
+  end
+
+  describe "PATCH #update"do
+    let(:user) { User.first }
+    let(:group) { FactoryGirl.create(:group, owner_id: user.id) }
+
+    it "should return the correct response"do
+      patch :update, id: group.id, member_username: user.username
+      expect(response).to have_http_status(200)
     end
 
+    it "should render the index template" do
+      patch :update, id: group.id, member_username: user.username
+      expect(response).to render_template :edit
+    end
 
-    # it "should link the tag_with_amount to the bill" do
-    #   post :create, user_id: user.id, total: "10", description: "Winkel", group_id: group.id, tags_with_amount_per_user: [{ user.id => { tag.description => '20' }}]
-    #   expect(TagsWithAmount.first.bill_id).to equal(Bill.first.id)
-    # end
+    it "should add user to group membership" do
+      patch :update, id: group.id, member_username: user.username
+      expect(Groups_users.find_by(user_id: user.id).group_id).to eq(group.id)
+    end
+  end
+
+  describe "DELETE #destroy_multiple_members" do
+    let(:user) { User.first }
+    let(:member1) { FactoryGirl.create(:user, username: "Jake", email: "jake@pro.be", password: "12345678", password_confirmation: "12345678") }
+    let(:member2) { FactoryGirl.create(:user, username: "Bob", email: "Bob@pro.be", password: "12345678", password_confirmation: "12345678") }
+    let(:group) { FactoryGirl.create(:group, owner_id: user.id, group_name: "testgrp", users: [user,member1,member2]) }
+
+    it "should delete multiple members at once" do
+      patch :destroy_multiple_members, group_id: group.id, members_ids: member1.id.to_s+','+member2.id.to_s
+      expect(Groups_users.all.count).to equal(1)
+
+    end
 
   end
+
 end
