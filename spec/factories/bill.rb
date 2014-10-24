@@ -1,7 +1,9 @@
 FactoryGirl.define do
   factory :bill do
-    association :group_id, factory: :group
     description "Winkel"
-    total "10"
+    id 1
+    total 10
+    user_id 2
+    group_id 1
   end
 end

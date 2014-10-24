@@ -36,7 +36,9 @@ class GroupsController < ApplicationController
     members_ids = params[:members_ids].split(',')
     members_ids.each do |i|
      member = User.find(i)
+     if member != User.find(@group.owner_id)
       @group.users.delete(member)
+       end
     end
     render :edit
   end

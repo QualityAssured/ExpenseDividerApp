@@ -84,10 +84,9 @@ RSpec.describe GroupsController, :type => :controller do
     let!(:member2) { FactoryGirl.create(:user, username: "Bob", email: "Bob@pro.be", password: "12345678", password_confirmation: "12345678") }
     let(:group) { FactoryGirl.create(:group, owner_id: user.id, group_name: "testgrp", users: [user,member1,member2]) }
 
-    it "should delete multiple members at once" do
-      patch :destroy_multiple_members, group_id: group.id, members_ids: member1.id.to_s+','+member2.id.to_s
+    it "should delete multiple members at once but never the owner" do
+      patch :destroy_multiple_members, group_id: group.id, members_ids: member1.id.to_s+','+member2.id.to_s+','+user.id.to_s
       expect(Groups_users.all.count).to equal(1)
-
     end
 
   end
