@@ -9,6 +9,7 @@ class GroupsController < ApplicationController
     if Group.create(owner_id: current_user.id, group_name: params[:group][:group_name]).valid?
       @group = Group.where(:owner_id => current_user.id,:group_name => params[:group][:group_name]).first
       current_user.groups << @group
+      @current_group_count = Group.where(owner_id: current_user.id).count
       render :index
     else
       @group = Group.create(owner_id: current_user.id, group_name: params[:group][:group_name])
@@ -45,6 +46,7 @@ class GroupsController < ApplicationController
 
   def index
     @group = Group.new
+    @current_group_count = Group.where(owner_id: current_user.id).count
     render :index
   end
 

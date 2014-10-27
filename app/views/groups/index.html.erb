@@ -9,6 +9,9 @@
         <% end %>
       </div>
     </div>
+
+    <% if @current_group_count > 0 %>
     <h5>Edit Groups</h5>
     <%= select_tag "groups_select", options_from_collection_for_select(current_user.groups, "id", "group_name") %>
       <%= link_to "Edit Group", nil, id: nil,class: 'edit_group_button' %>
+    <% end%>
