@@ -17,8 +17,8 @@ RSpec.describe Group, :type => :model do
     end
 
     it "validates group_name is unique" do
-      FactoryGirl.create(:group,:id => 1, :group_name => "bla", :owner_id => 1).should be_valid
-      FactoryGirl.build(:group,:id => 2, :group_name => "bla", :owner_id => 1).should_not be_valid
+      FactoryGirl.create(:group, :group_name => "bla", :owner_id => 1).should be_valid
+      FactoryGirl.build(:group,:group_name => "bla", :owner_id => 1).should_not be_valid
     end
 
   end
