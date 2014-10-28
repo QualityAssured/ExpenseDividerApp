@@ -26,7 +26,8 @@ $(document).ready(function() {
             else {
                 selectedTags.push(value);
                 $('#selected_tags_container','#bill_input').show();
-                addLine(value, 1);
+                default_user_id = $(this).attr('default_user_id');
+                addLine(value, default_user_id);
 
                 $('select').change(function() {
                    id = $(this).find(":selected").val();
@@ -41,6 +42,9 @@ function addLine(tag_value, default_user_id) {
     line = $('#hidden_input_line').children().clone();
     button = line[0];
     number_field = line[1];
+    select_box = line[2];
+
+    select_box.value = default_user_id;
     button.value = tag_value;
     number_field.name = buildNameFromValueAndId(tag_value, default_user_id);
     line.appendTo('#selected_tags_container','#bill_input');

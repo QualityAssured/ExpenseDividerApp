@@ -26,7 +26,7 @@
 
 <div id='tags_container' class='tags-container jumbotron'>
   <% current_user.tags.each do |t| %>
-    <%= submit_tag t.description, class: 'btn-primary btn tag', tag_id: t.id %>
+    <%= submit_tag t.description, class: 'btn-primary btn tag', tag_id: t.id, default_user_id: current_user.id %>
   <% end %>
   </br>
   <%= submit_tag "Done", class: 'done btn-primary btn'%>
