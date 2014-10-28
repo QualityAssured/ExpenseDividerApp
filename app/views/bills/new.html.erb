@@ -19,7 +19,7 @@
 
 <div id="hidden_input_line" hidden="hidden">
   <%= submit_tag "no value", class: 'btn-primary btn tag'%>
-  <%= number_field_tag :amount, nil, step: 0.01 %>
+  <%= number_field_tag nil, nil, step: 0.01 %>
   <%= collection_select(nil, :user, User.all, :id, :email) %>
   </br>
 </div>

@@ -22,6 +22,9 @@ $(document).ready(function() {
                 selectedTags.splice(index, 1);
                 tag_name = $(this).val();
                 removeLine(tag_name);
+                if( selectedTags.length == 0 ) {
+                    $('#selected_tags_container','#bill_input').hide();
+                }
             }
             else {
                 selectedTags.push(value);
