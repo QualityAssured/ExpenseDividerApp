@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe ExpensecategoriesController, :type => :controller do
+RSpec.describe ExpenseCategoriesController, :type => :controller do
 
   login_user
 
@@ -32,18 +32,18 @@ describe ExpensecategoriesController, :type => :controller do
 
     it "should save the group" do
       post :create, group_id: group.id, :expensecategory=> { :description => 'testdescription' }
-      expect(Expensecategory.all.count).to equal(1)
+      expect(ExpenseCategory.all.count).to equal(1)
     end
 
     it "should add Expense Category to Group" do
       post :create, group_id: group.id, :expensecategory=> { :description => 'testdescription' }
-      expect(Expensecategory.find_by(group_id: group.id).group_id).to eq(Group.first.id)
+      expect(ExpenseCategory.find_by(group_id: group.id).group_id).to eq(Group.first.id)
     end
   end
 
   describe "DELETE #destroy" do
 
-    let!(:expensecategory) { FactoryGirl.create(:expensecategory) }
+    let!(:expensecategory) { FactoryGirl.create(:expense_category) }
     it "should return the correct response" do
       post :destroy, id: expensecategory.id
       expect(response).to have_http_status(200)
@@ -56,7 +56,7 @@ describe ExpensecategoriesController, :type => :controller do
 
     it "should delete the expense category" do
       post :destroy, id: expensecategory.id
-      expect(Expensecategory.all.count).to equal(0)
+      expect(ExpenseCategory.all.count).to equal(0)
     end
 
   end
