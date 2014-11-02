@@ -20,23 +20,27 @@ describe ExpensecategoriesController, :type => :controller do
     let(:user) { User.first }
     let!(:group) { FactoryGirl.create(:group, owner_id: user.id) }
 
+    before(:each) do
+      @category_attributes = { :expensecategory => {:description => "testdescription", :group_id => group.id}}
+    end
+
     it "should return the correct response" do
-      post :create, group_id: group.id, :expensecategory=> { :description => 'testdescription' }
-      expect(response).to have_http_status(200)
+      post :create, @category_attributes
+      expect(response).to have_http_status(302)
     end
 
     it "should render the index template" do
-      post :create, group_id: group.id, :expensecategory=> { :description => 'testdescription' }
-      expect(response).to render_template :new
+      post :create, @category_attributes
+      expect(response).to redirect_to edit_group_path(group.id)
     end
 
     it "should save the group" do
-      post :create, group_id: group.id, :expensecategory=> { :description => 'testdescription' }
+      post :create, @category_attributes
       expect(Expensecategory.all.count).to equal(1)
     end
 
     it "should add Expense Category to Group" do
-      post :create, group_id: group.id, :expensecategory=> { :description => 'testdescription' }
+      post :create, @category_attributes
       expect(Expensecategory.find_by(group_id: group.id).group_id).to eq(Group.first.id)
     end
   end

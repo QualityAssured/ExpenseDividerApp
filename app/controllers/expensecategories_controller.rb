@@ -5,9 +5,9 @@ class ExpensecategoriesController < ApplicationController
   end
 
   def create
-    @group = Group.find(params[:group_id])
-    @group.expensecategories << Expensecategory.create(description: params[:expensecategory][:description])
-    render :new
+    @group = Group.where(id: params[:expensecategory][:group_id]).first
+      Expensecategory.create(description: params[:expensecategory][:description], group_id: params[:expensecategory][:group_id]).valid?
+    redirect_to edit_group_path(@group.id)
   end
 
   def destroy

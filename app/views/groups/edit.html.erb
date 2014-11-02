@@ -8,7 +8,7 @@
           <% end %>
       <% end %>
     </div>
-    <!--Destroy-->
+    <!--Destroy Members-->
       <%= form_tag destroy_multiple_members_groups_path, method: :delete do %>
         <%= hidden_field_tag :members_ids, nil%>
         <%= hidden_field_tag :group_id, @group.id %>
@@ -22,4 +22,20 @@
       <%= submit_tag "Invite", class: 'btn-primary btn' %>
     <% end %>
   </div>
+</div>
+<div id ='category_input'>
+  <%= label_tag @group.group_name+' categories'%>
+  <div id='categories_container' class='categories-container jumbotron'>
+    <% @group.expensecategories.each do |e| %>
+        <%= label_tag e.description,nil, class: 'btn-primary btn select_categories', id: e.id %>
+    <% end %>
+  </div>
+
+  <%= form_for :expensecategory, :url => {:controller => "expensecategories", :action => "create", :method => "post" } do|f| %>
+    <%= f.label :description%>
+    <%=f.text_field :description%>
+    <%= f.hidden_field :group_id, value: @group.id%>
+    <%= f.submit "Create Category"%>
+  <% end %>
+
 </div>
