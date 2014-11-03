@@ -19,14 +19,14 @@
 
 <div id="hidden_input_line" hidden="hidden">
   <%= submit_tag "no value", class: 'btn-primary btn tag'%>
-  <%= number_field_tag :amount, nil, step: 0.01 %>
+  <%= number_field_tag nil, nil, step: 0.01 %>
   <%= collection_select(nil, :user, User.all, :id, :email) %>
   </br>
 </div>
 
 <div id='tags_container' class='tags-container jumbotron'>
   <% current_user.tags.each do |t| %>
-    <%= submit_tag t.description, class: 'btn-primary btn tag', tag_id: t.id %>
+    <%= submit_tag t.description, class: 'btn-primary btn tag', tag_id: t.id, default_user_id: current_user.id %>
   <% end %>
   </br>
   <%= submit_tag "Done", class: 'done btn-primary btn'%>
