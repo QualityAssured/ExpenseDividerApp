@@ -26,12 +26,12 @@
 <div id ='category_input'>
   <%= label_tag @group.group_name+' categories'%>
   <div id='categories_container' class='categories-container jumbotron'>
-    <% @group.expensecategories.each do |e| %>
+    <% @group.expense_categories.each do |e| %>
         <%= label_tag e.description,nil, class: 'btn-primary btn select_categories', id: e.id %>
     <% end %>
   </div>
 
-  <%= form_for :expensecategory, :url => {:controller => "expensecategories", :action => "create", :method => "post" } do|f| %>
+  <%= form_for :expensecategory, :url => {:controller => "expense_categories", :action => "create", :method => "post" } do|f| %>
     <%= f.label :description%>
     <%=f.text_field :description%>
     <%= f.hidden_field :group_id, value: @group.id%>

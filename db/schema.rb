@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 20141015182021) do
     t.integer "group_id"
   end
 
-  create_table "expensecategories", force: true do |t|
+  create_table "expense_categories", force: true do |t|
     t.string  "description"
     t.integer "group_id"
   end
