@@ -1,0 +1,10 @@
+<% if user_signed_in? %>
+    <div id="menu" class="jumbotron">
+      <%= link_to "Groups", groups_path, class: 'btn btn-primary btn-block' %>
+      <%= link_to "Show Bills", bills_path, class: 'btn btn-primary btn-block' %>
+      <%= link_to "Create Bill", root_path, class: 'btn btn-primary btn-block'  %>
+      <%= link_to "Tags", new_tag_path, class: 'btn btn-primary btn-block'  %>
+      <%= link_to "Config", edit_user_registration_path, class: 'btn btn-primary btn-block'  %>
+      <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: 'btn btn-primary btn-block'  %>
+    </div>
+<% end %>
