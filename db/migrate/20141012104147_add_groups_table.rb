@@ -6,13 +6,11 @@ class AddGroupsTable < ActiveRecord::Migration
     create_table :groups do |t|
       t.integer :owner_id
       t.string :group_name
-      # t.has_many :bills
-      # t.has_many :expense_categories
     end
 
-    create_table :expense_categories do |t|
+    create_table :expensecategories do |t|
       t.string :description
-      t.belongs_to :group
+      t.integer :group_id
     end
 
     create_table :groups_users, id:false do |t|

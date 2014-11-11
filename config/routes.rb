@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :bills
-
+  resources :expense_categories
   resources :groups do
   collection do
     delete 'destroy_multiple_members'
