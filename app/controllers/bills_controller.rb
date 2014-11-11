@@ -1,7 +1,11 @@
 class BillsController < ApplicationController
 
   def new
-    render :new
+    if current_user.groups.count > 0
+      render :new
+    else
+      redirect_to :groups
+    end
   end
 
   def create

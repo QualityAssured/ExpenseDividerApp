@@ -1,0 +1,10 @@
+#groups_select {
+    font-weight: bold;
+    font-size: 150%;
+    max-width: 200px !important;
+    overflow: hidden;
+}
+option {
+    max-width: 120px !important;
+    overflow: hidden;
+}
