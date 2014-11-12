@@ -19,9 +19,11 @@
     width: 40%;
 }
 
-select {
-    color: #777777;
-    margin-top: 15px;
+.navbar select {
+    background-color: #f8f8f8;
+    margin-top: 1px;
+    border-radius: 5px;
+    height: 49px;
     position: relative;
     display: inherit;
 }
