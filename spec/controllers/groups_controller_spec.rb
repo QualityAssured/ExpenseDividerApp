@@ -24,12 +24,12 @@ RSpec.describe GroupsController, :type => :controller do
       ## The method below takes: a http verb (post), the controller action you want to send test and all required parameters to make that action work
 
       post :create, owner_id: user.id, :group => { :group_name => 'testgrp' }
-      expect(response).to have_http_status(200)
+      expect(response).to have_http_status(302)
     end
 
-    it "should render the index template" do
+    it "should redirect to the index action" do
       post :create, owner_id: user.id, :group => { :group_name => 'testgrp' }
-      expect(response).to render_template :index
+      expect(response).to redirect_to action: :index
     end
 
     it "should save the group" do
