@@ -10,10 +10,10 @@ class GroupsController < ApplicationController
       @group = Group.where(:owner_id => current_user.id,:group_name => params[:group][:group_name]).first
       current_user.groups << @group
       @current_group_count = Group.where(owner_id: current_user.id).count
-      render :index
+      redirect_to :action => "index"
     else
       @group = Group.create(owner_id: current_user.id, group_name: params[:group][:group_name])
-      render :action => "index"
+      redirect_to :action => "index"
     end
   end
 
