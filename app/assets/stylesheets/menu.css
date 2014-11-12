@@ -16,7 +16,7 @@
 #menu.menu-open {
     left: 0%;
     z-index: 10;
-    width: 80%;
+    width: 40%;
 }
 
 select {
@@ -24,9 +24,28 @@ select {
     margin-top: 15px;
     position: relative;
     display: inherit;
-
 }
 
-.navbar-brand {
-    font-size: 15px;
+a.menu-open:link, a.menu-open:focus, a.menu-open:hover, a.menu-open:active {
+    background-color: #333333 !important;
+    color: #777777 !important;
+}
+
+#menu ul {
+    list-style-type: none;
+    background-color: #f8f8f8;
+}
+
+#menu a:link, a:visited {
+    color: #777777;
+    padding-bottom: 15px;
+    padding-top: 15px;
+    line-height: 20px;
+    display: block;
+    position: relative;
+    text-decoration: none;
+}
+
+#menu a:hover, a:active {
+    color: #333333;
 }
