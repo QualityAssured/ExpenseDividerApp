@@ -5,12 +5,12 @@ $(document).ready(function() {
 
         $('#add_tags','#bill_input').click(function() {
             $('#tags_container').toggleClass('open');
-            $('#bill_input').toggleClass('open');
+            $('#main-content').toggleClass('open');
         });
 
         $('.done','#tags_container').click(function() {
             $('#tags_container').toggleClass('open');
-            $('#bill_input').toggleClass('open');
+            $('#main-content').toggleClass('open');
         });
 
         $('.tag','#tags_container').click(function() {

@@ -19,6 +19,25 @@
     width: 40%;
 }
 
+#main-content {
+    position: fixed;
+    width: 100%;
+    max-width: 100%;
+    left: 0%;
+
+    -webkit-transition-property: left;
+    -webkit-transition-duration: 0.3s;
+    -webkit-transition-timing-function: linear;
+
+    transition-property: left;
+    transition-duration: 0.3s;
+    transition-timing-function: linear;
+}
+
+#main-content.menu-open {
+    left: 100%;
+}
+
 .navbar select {
     background-color: #f8f8f8;
     margin-top: 1px;

@@ -17,7 +17,11 @@ div#tags_container.open {
     right: 0%;
 }
 
-div#bill_input {
+#bill_input {
+    float: left;
+}
+
+#main-content {
     position: fixed;
     width: 100%;
     left: 0%;
@@ -36,7 +40,7 @@ label.error {
     border-bottom-color: red;
 }
 
-div#bill_input.open {
+#main-content.open {
     left: -100%;
 }
 
