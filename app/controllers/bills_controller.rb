@@ -1,16 +1,12 @@
 class BillsController < ApplicationController
 
+  before_action :validate_group, only: [ :create ]
+
   def new
     render :new
   end
 
   def create
-    if !current_user.groups.map(&:id).include? params[:groups_select].to_i
-      flash[:error] = "Failed to create the bill."
-      render :new
-      return
-    end
-
     bill = Bill.create(user_id: current_user.id, total: params[:total], description: params[:description], group_id: params[:groups_select])
 
    if params[:tags_with_amount_per_user] != nil
@@ -30,7 +26,16 @@ class BillsController < ApplicationController
   end
 
   def index
-     render :index
+    render :index
   end
 
+  private
+
+  def validate_group
+    if !current_user.groups.map(&:id).include? params[:groups_select].to_i
+      flash[:error] = "Failed to create the bill."
+      render :new
+      return
+    end
+  end
 end
