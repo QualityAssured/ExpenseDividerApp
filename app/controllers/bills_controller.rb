@@ -1,6 +1,6 @@
 class BillsController < ApplicationController
 
-  before_action :validate_group, only: [ :create ]
+  before_action :validate_group_belongs_to_user, only: [ :create ]
 
   def new
     render :new
@@ -31,7 +31,7 @@ class BillsController < ApplicationController
 
   private
 
-  def validate_group
+  def validate_group_belongs_to_user
     if !current_user.groups.map(&:id).include? params[:groups_select].to_i
       flash[:error] = "Failed to create the bill."
       render :new
