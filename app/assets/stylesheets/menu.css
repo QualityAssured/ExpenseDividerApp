@@ -26,6 +26,7 @@
     height: 49px;
     position: relative;
     display: inherit;
+    max-width: 130px;
 }
 
 a.menu-open:link, a.menu-open:focus, a.menu-open:hover, a.menu-open:active {
