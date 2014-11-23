@@ -1,33 +1,8 @@
-<div id='member_input'>
-  <div class='content'>
-    <%= label_tag @group.group_name+' members'%>
-    <div id='invite_members_container' class='invite_members-container jumbotron'>
-      <% @group.users.each do |u| %>
-        <% if u.id != @group.owner_id%>
-      <%= label_tag u.username,nil, class: 'btn-primary btn select_members', id: u.id %>
-          <% end %>
-      <% end %>
-    </div>
-    <!--Destroy Members-->
-      <%= form_tag destroy_multiple_members_groups_path, method: :delete do %>
-        <%= hidden_field_tag :members_ids, nil%>
-        <%= hidden_field_tag :group_id, @group.id %>
-        <%= submit_tag "Remove selected members", class: 'btn-primary btn delete_members'%>
-      <% end %>
-
-    <h5>Invite New Users </h5>
-
-    <%=form_tag group_path(@group), :method => :patch do %>
-      <%= label_tag "Member name:" %> <%= text_field "member_username", nil,id: @group.id%>
-      <%= submit_tag "Invite", class: 'btn-primary btn' %>
-    <% end %>
-  </div>
-</div>
 <div id ='category_input'>
   <%= label_tag @group.group_name+' categories'%>
   <div id='categories_container' class='categories-container jumbotron'>
     <% @group.expense_categories.each do |e| %>
-        <%= label_tag e.description,nil, class: 'btn-primary btn select_categories', id: e.id %>
+      <%= label_tag e.description,nil, class: 'btn-primary btn select_categories', id: e.id %>
     <% end %>
   </div>
 
@@ -37,5 +12,36 @@
     <%= f.hidden_field :group_id, value: @group.id%>
     <%= f.submit "Create Category"%>
   <% end %>
+  </br>
+  <%= submit_tag "Done", id: :done, class: 'btn-primary btn' %>
 
+</div>
+
+<div id='member_input'>
+  <div class='content'>
+    <h7>Group Settings</h7>
+    <%= label_tag @group.group_name+' members'%>
+    <div id='invite_members_container' class='invite_members-container jumbotron'>
+      <% @group.users.each do |u| %>
+        <% if u.id != @group.owner_id%>
+      <%= label_tag u.username,nil, class: 'btn-primary btn select_members', id: u.id %>
+          <% end %>
+      <% end %>
+    </div>
+      <%= form_tag destroy_multiple_members_groups_path, method: :delete do %>
+        <%= hidden_field_tag :members_ids, nil%>
+        <%= hidden_field_tag :group_id, @group.id %>
+        <%= submit_tag "Remove selected members", class: 'btn-primary btn delete_members'%>
+      <% end %>
+
+    <%=form_tag group_path(@group), :method => :patch do %>
+      <%= label_tag "Member name:" %> <%= text_field "member_username", nil,id: @group.id%>
+      <%= submit_tag "Invite", class: 'btn-primary btn' %>
+    <% end %>
+    </br>
+    ---------------------------------
+    </br>
+    <%= submit_tag "Add/Remove categories", id: :add_categories, class: 'btn-primary btn' %>
+
+  </div>
 </div>

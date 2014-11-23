@@ -21,4 +21,14 @@ $(document).ready(function() {
         $('#members_ids','#member_input').attr('value', selected_Members);
 
     });
+
+    $('#add_categories','#member_input').click(function() {
+        $('#category_input').toggleClass('open');
+        $('#member_input').toggleClass('open');
+    });
+
+    $('#done','#category_input').click(function() {
+        $('#category_input').toggleClass('open');
+        $('#member_input').toggleClass('open');
+    });
 });
