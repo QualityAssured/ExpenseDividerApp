@@ -1,6 +1,6 @@
 <div id='bill_input'>
   <div class='content'>
-    <h5> Create new bill</h5>
+    <h4>Fill out the from to create a new bill.</h4>
     <%= submit_tag "Add/Remove tags", id: :add_tags, class: 'btn-primary btn' %>
 
     <%= form_tag(bills_path) do %>
@@ -16,9 +16,9 @@
 </div>
 
 <div id="hidden_input_line" hidden="hidden">
-  <%= submit_tag "no value", class: 'btn-primary btn tag'%>
+  <%= label_tag "no value",nil, class: 'tag'%>
   <%= number_field_tag nil, nil, step: 0.01 %>
-  <%= collection_select(nil, :user, User.all, :id, :email) %>
+  <%= collection_select(nil, :user, User.all, :id, :username) %>
   </br>
 </div>
 
