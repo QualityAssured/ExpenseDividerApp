@@ -23,7 +23,7 @@ describe BillsController, :type => :controller do
       let!(:tag) { FactoryGirl.create(:tag, user_id: user.id, description: "Bloemkool") }
       let!(:group) { FactoryGirl.create(:group, owner_id: user.id, users: [user]) }
       let!(:other_group) { FactoryGirl.create(:group, owner_id: other_user.id) }
-      let!(:params) { {user_id: user.id, total: "10", description: "Winkel", groups_select: group.id, tags_with_amount_per_user: [{ user.id => { tag.description => '20' }}]} }
+      let!(:params) { {user_id: user.id, total: "10", description: "Winkel", group_id: group.id, tags_with_amount_per_user: [{ user.id => { tag.description => '20' }}]} }
 
       it "should return the correct response" do
         ## The method below takes: a http verb (post), the controller action you want to send test and all required parameters to make that action work
@@ -64,7 +64,7 @@ describe BillsController, :type => :controller do
       context "error handling" do
 
         before do
-          params.merge!( {groups_select: other_group.id} )
+          params.merge!( {group_id: other_group.id} )
           post :create, params
         end
 

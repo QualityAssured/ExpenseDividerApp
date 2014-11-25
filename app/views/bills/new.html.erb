@@ -1,6 +1,6 @@
 <div id='bill_input'>
   <div class='content'>
-    <h4>Fill out the from to create a new bill.</h4>
+    <h4>Fill out the form to create a new bill.</h4>
     <%= submit_tag "Add/Remove tags", id: :add_tags, class: 'btn-primary btn' %>
 
     <%= form_tag(bills_path) do %>
@@ -10,6 +10,7 @@
       </br>
       <%= label_tag "Description:" %> <%= text_field_tag "description"%>
       </br>
+      <%= hidden_field_tag "group_id", 'default-value'%>
       <%= submit_tag "Submit", class: 'btn-primary btn' %>
     <% end %>
   </div>

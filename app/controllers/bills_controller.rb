@@ -7,9 +7,9 @@ class BillsController < ApplicationController
   end
 
   def create
-    bill = Bill.create(user_id: current_user.id, total: params[:total], description: params[:description], group_id: params[:groups_select])
+    bill = Bill.create(user_id: current_user.id, total: params[:total], description: params[:description], group_id: params[:group_id])
 
-   if params[:tags_with_amount_per_user] != nil
+    if params[:tags_with_amount_per_user] != nil
     tags_per_user = params[:tags_with_amount_per_user][0].to_hash
 
     tags_per_user.each do |user_with_tags|
@@ -32,7 +32,7 @@ class BillsController < ApplicationController
   private
 
   def validate_group_belongs_to_user
-    if !current_user.groups.map(&:id).include? params[:groups_select].to_i
+    if !current_user.groups.map(&:id).include? params[:group_id].to_i
       flash[:error] = "Failed to create the bill."
       render :new
       return
