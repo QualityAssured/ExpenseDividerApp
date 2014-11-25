@@ -4,14 +4,16 @@
     <%= submit_tag "Add/Remove tags", id: :add_tags, class: 'btn-primary btn' %>
 
     <%= form_tag(bills_path) do %>
-      <div id='selected_tags_container' class='jumbotron'></div>
-      </br>
-      <%= label_tag "Total:" %> <%= number_field_tag "total"%>
-      </br>
-      <%= label_tag "Description:" %> <%= text_field_tag "description"%>
-      </br>
-      <%= hidden_field_tag "group_id", 'default-value'%>
-      <%= submit_tag "Submit", class: 'btn-primary btn' %>
+      <div class='jumbotron'>
+        <div id='selected_tags_container'></div>
+          </br>
+          <%= label_tag "Total:" %> <%= number_field_tag "total"%>
+          </br>
+          <%= label_tag "Description:" %> <%= text_field_tag "description"%>
+          </br>
+          <%= hidden_field_tag "group_id", 'default-value'%>
+          <%= submit_tag "Submit", class: 'btn-primary btn' %>
+      </div>
     <% end %>
   </div>
 </div>
