@@ -31,4 +31,13 @@ $(document).ready(function() {
         $('#category_input').toggleClass('open');
         $('#member_input').toggleClass('open');
     });
+
+    $('.select_categories','#category_input').click(function() {
+        selected_Categories='';
+        $(this).toggleClass('selected');
+        $('.selected','#category_input').each (function( index, element ){
+            selected_Categories = selected_Categories +( $( element).attr('expensecategory_id')+ ',');
+        });
+        $('#categories_ids','#category_input').attr('value', selected_Categories);
+    });
 });
