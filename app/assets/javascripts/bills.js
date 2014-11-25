@@ -1,6 +1,12 @@
 $(document).ready(function() {
         var selectedTags = [];
 
+        setHiddenFieldToGroupSelectValue();
+
+        $('#groups_select').change(function() {
+            setHiddenFieldToGroupSelectValue();
+        });
+
         $('#selected_tags_container','#bill_input').hide();
 
         $('#add_tags','#bill_input').click(function() {
@@ -14,13 +20,13 @@ $(document).ready(function() {
         });
 
         $('.tag','#tags_container').click(function() {
-            value = $(this).val();
-            index = $.inArray(value, selectedTags);
+            var value = $(this).val();
+            var index = $.inArray(value, selectedTags);
 
             $(this).toggleClass('selected btn-primary','#bill_input');
             if( index > -1) {
                 selectedTags.splice(index, 1);
-                tag_name = $(this).val();
+                var tag_name = $(this).val();
                 removeLine(tag_name);
                 if( selectedTags.length == 0 ) {
                     $('#selected_tags_container','#bill_input').hide();
@@ -29,12 +35,12 @@ $(document).ready(function() {
             else {
                 selectedTags.push(value);
                 $('#selected_tags_container','#bill_input').show();
-                default_user_id = $(this).attr('default_user_id');
+                var default_user_id = $(this).attr('default_user_id');
                 addLine(value, default_user_id);
 
-                $('select').change(function() {
-                   id = $(this).find(":selected").val();
-                   value = $(this).prev().prev().val();
+                $('select#_user').change(function() {
+                   var id = $(this).find(":selected").val();
+                   var value = $(this).prev().prev().val();
                    $(this).prev('input').attr('name', buildNameFromValueAndId(value, id));
                 });
             }
@@ -42,19 +48,22 @@ $(document).ready(function() {
 });
 
 function addLine(tag_value, default_user_id) {
-    line = $('#hidden_input_line').children().clone();
-    button = line[0];
-    number_field = line[1];
-    select_box = line[2];
+    var line = $('#hidden_input_line').children().clone();
+    var label = line[0];
+    var number_field = line[1];
+    var select_box = line[2];
 
     select_box.value = default_user_id;
-    button.value = tag_value;
+
+    $(label).text(tag_value);
+    $(label).attr('for', tag_value);
     number_field.name = buildNameFromValueAndId(tag_value, default_user_id);
     line.appendTo('#selected_tags_container','#bill_input');
 }
 
 function removeLine(tag_name) {
-    line[0] = $("#selected_tags_container input[value='" + tag_name + "']");
+    var line = [];
+    line[0] = $("#selected_tags_container label[for='"+ tag_name + "']");
     line[1] = line[0].next();
     line[2] = line[1].next();
     line[3] = line[2].next();
@@ -65,4 +74,9 @@ function removeLine(tag_name) {
 
 function buildNameFromValueAndId(tag_value, id) {
     return "tags_with_amount_per_user[][" + id + "][" + tag_value + "]";
+}
+
+function setHiddenFieldToGroupSelectValue() {
+    var id = $('#groups_select').find(":selected").val();
+    $('#group_id').val(id);
 }
