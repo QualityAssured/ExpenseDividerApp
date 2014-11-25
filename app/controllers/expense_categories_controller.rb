@@ -16,6 +16,17 @@ class ExpenseCategoriesController < ApplicationController
     render :new
   end
 
+  def destroy_multiple
+    @expensecategory = ExpenseCategory.new
+    category_to_destroy = ExpenseCategory.find(params[:categories_ids].split(','))
+    category_to_destroy.each do |c|
+      if current_user.id == c.group.owner_id
+        c.destroy
+      end
+    end
+    render :new
+  end
+
   def index
     render :index
   end

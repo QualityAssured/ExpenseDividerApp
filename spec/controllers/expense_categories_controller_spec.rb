@@ -62,6 +62,19 @@ RSpec.describe ExpenseCategoriesController, :type => :controller do
       post :destroy, id: expensecategory.id
       expect(ExpenseCategory.all.count).to equal(0)
     end
-
   end
+
+  describe "DELETE #destroy_multiple" do
+    let(:user) { User.first }
+    let!(:group1)           { FactoryGirl.create(:group,id: 1, owner_id: user.id)}
+    let!(:expensecategory1) { FactoryGirl.create(:expense_category, description: "desc1", group_id: 1) }
+    let!(:expensecategory2) { FactoryGirl.create(:expense_category, description: "desc2", group_id: 1) }
+    let!(:expensecategory3) { FactoryGirl.create(:expense_category, description: "desc3", group_id: 1) }
+
+    it "should delete multiple categories at once" do
+      delete :destroy_multiple, categories_ids: expensecategory1.id.to_s+','+expensecategory2.id.to_s+','+expensecategory3.id.to_s
+      expect(ExpenseCategory.all.count).to equal(0)
+    end
+  end
+
 end
