@@ -40,6 +40,17 @@ div#bill_input.open {
     left: -100%;
 }
 
+#bill_input select {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+#bill_input .jumbotron {
+    padding-top: 20px !important;
+    padding-bottom: 10px;
+    margin-top: 20px;
+}
+
 .content {
     margin-left: 10%;
 }
@@ -50,8 +61,6 @@ div#bill_input.open {
 
 input[type='number'] {
     width: 20%;
-    margin-left: 5px;
-    margin-right: 5px;
 }
 
 .selected {

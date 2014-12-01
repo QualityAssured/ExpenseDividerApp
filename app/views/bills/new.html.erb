@@ -7,9 +7,9 @@
       <div class='jumbotron'>
         <div id='selected_tags_container'></div>
           </br>
-          <%= label_tag "Total:" %> <%= number_field_tag "total"%>
+          <%= number_field_tag "total"%> <%= label_tag "Total" %>
           </br>
-          <%= label_tag "Description:" %> <%= text_field_tag "description"%>
+          <%= text_field_tag "description"%> <%= label_tag "Description" %>
           </br>
           <%= hidden_field_tag "group_id", 'default-value'%>
           <%= submit_tag "Submit", class: 'btn-primary btn' %>
@@ -19,9 +19,9 @@
 </div>
 
 <div id="hidden_input_line" hidden="hidden">
-  <%= label_tag "no value",nil, class: 'tag'%>
   <%= number_field_tag nil, nil, step: 0.01 %>
   <%= collection_select(nil, :user, User.all, :id, :username) %>
+  <%= label_tag "no value",nil, class: 'tag'%>
   </br>
 </div>
 
